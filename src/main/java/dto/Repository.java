@@ -1,48 +1,31 @@
 package dto;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class Repository {
     public static List<Repository> repositories = new ArrayList<>();
-	private int repoIndex; // TODO: change to repoIndex and its getters and setters
-	private string repoIndex;
-	private string repoLink;
-	private string localLink;
-	private List<String> team; // each string in this list will be an unity id.
-	//for student(s) working on this repo
+    private int repoIndex;
+    private String repoLink;
+    private String localLink;
+    private List<String> team;
 
-
-    //gettter and setter
-    List<Student> team = new ArrayList<>();
-
-    public getrepoID(){}
-    public setrepoID(){}
-
-    public getrepoURL(){}
-    public setrepoURL(){}
-
-    public mostRecentSourceFile(){}
-    public mostRecentSourceFile(){}
-
-    public Repository initialize(List<Student> teams, Assignment assignment) {
-
-        for(Student team: teams) {
-            Repository repo = new Repository(team);
-            repositories.add(repo);
-        }
-
+    public Repository(String[] teamData) {
+        this.repoIndex = Integer.parseInt(teamData[0]);
+        this.team = Arrays.asList(teamData[1].split(","));
+        this.repoLink = teamData[2];
+        this.localLink = this.repoIndex + "/";
     }
 
-    /*
-    if it is a team project, the repo is owned by more than one students, 
-    so students list will not be empty
+    public boolean isTeamProject() {
+        if (team.size() > 1) {
+            return true;
+        }
+        return false;
+    }
 
-    Hence, isTeamProject will return true if students is not empty
-    otherwise false
-    */
-    public isTeamProject(){}
-
+    public String show() {
+        return "ID: " + repoIndex + " Team: " + team.toString() + " URL: " + repoLink +" local: "+ localLink;
+    }
 }

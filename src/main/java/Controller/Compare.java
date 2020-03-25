@@ -1,9 +1,13 @@
+package Controller;
+
 import dto.Pair;
 import dto.Repository;
 import dto.Results;
 
-import javax.xml.transform.Result;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Compare {
 
@@ -25,7 +29,7 @@ public class Compare {
         return new Results(rows);
     }
 
-    private static List<Double> checkSimilarity(Pair pair) {
+    private static List<Integer> checkSimilarity(Pair pair) {
         // get plagiarsim from codequiry API
         return new ArrayList<>();
     }
