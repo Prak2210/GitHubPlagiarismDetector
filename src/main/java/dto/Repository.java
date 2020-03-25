@@ -9,9 +9,13 @@ public class Repository {
     public static List<Repository> repositories = new ArrayList<>();
 	private int repoIndex; // TODO: change to repoIndex and its getters and setters
 	private string repoIndex;
-	private string mostRecentSourceFile;
-
+	private string repoLink;
+	private string localLink;
+	private List<String> team; // each string in this list will be an unity id.
 	//for student(s) working on this repo
+
+
+    //gettter and setter
     List<Student> team = new ArrayList<>();
 
     public getrepoID(){}

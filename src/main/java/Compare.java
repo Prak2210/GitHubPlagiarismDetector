@@ -7,12 +7,17 @@ import java.util.*;
 
 public class Compare {
 
-    public static Results compare(Repository repository) {
-        List<Repository> repositories = repository.repositories;
+    public static Results compare(List<Repository> repositories) {
 
-        List<Pair> pairs = getPairs(repositories); //can be eliminated
+        // repo1, repo2, repo3 = 3
+        List<Pair> pairs = getPairs(repositories); //can be eliminated  //3 pairs
         Map<Pair, List<Integer>> rows = new HashMap<>();
 
+        // r1,r2 ------ Ha
+        // f2, r3
+        // r1, r3
+
+        //hashmap will contain pair as a key and percentage of plagiarism detected as value
         for (Pair pair : pairs) {
             rows.put(pair, checkSimilarity(pair));
         }
@@ -20,8 +25,8 @@ public class Compare {
         return new Results(rows);
     }
 
-    private static List<Integer> checkSimilarity(Pair pair) {
-        // get plagiarsim from API
+    private static List<Double> checkSimilarity(Pair pair) {
+        // get plagiarsim from codequiry API
         return new ArrayList<>();
     }
 
@@ -35,6 +40,8 @@ public class Compare {
                 pairs.add(pair);
             }
         }
+
+        // Pair(repo1, repo2), Pair(repo2, repo3),.....
 
         return pairs;
     }

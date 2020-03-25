@@ -11,6 +11,9 @@ public class Results {
     }
 
     public void displayResults() {
-        showTable(rows);
+        // we make a table from rows: pair(r1, r2) and value of rows hashmap is % plagiarism
+
+        // System.out.----> table
+        // try to figure out some interactive charts
     }
 }

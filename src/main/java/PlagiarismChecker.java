@@ -4,6 +4,8 @@ import dto.Results;
 import dto.Student;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlagiarismChecker {
 
@@ -24,8 +26,10 @@ public class PlagiarismChecker {
 
         student.initialize(studentFile);
         repository.initialize(student);
+        List<Repository> repositories = new ArrayList<>();
 
-        Results results = Compare.compare(repository);
+
+        Results results = Compare.compare(repositories);
 
         results.displayResults();
 
