@@ -28,4 +28,30 @@ public class Repository {
     public String show() {
         return "ID: " + repoIndex + " Team: " + team.toString() + " URL: " + repoLink +" local: "+ localLink;
     }
+
+    public void setRepoIndex(int repoIndex) {
+        this.repoIndex = repoIndex;
+    }
+    public int getRepoIndex()
+    {
+        return this.repoIndex;
+    }
+    public void setLocalLink(String localLink)
+    {
+        this.localLink = localLink;
+    }
+    public String getLocalLink ()
+    {
+        return this.localLink;
+    }
+    public void setRepoLink(String RepoLink)
+    {
+        this.repoLink = RepoLink;
+    }
+    public String getRepoLink()
+    {
+        return this.repoLink;
+    }
+
+
 }

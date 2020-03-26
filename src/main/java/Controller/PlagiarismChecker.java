@@ -22,6 +22,7 @@ public class PlagiarismChecker {
         }
         takePull(repositories);
         Results results = Compare.compare(repositories);
+        results.printResults();
         results.displayResults();
     }
 

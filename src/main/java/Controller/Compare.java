@@ -15,7 +15,7 @@ public class Compare {
 
         // repo1, repo2, repo3 = 3
         List<Pair> pairs = getPairs(repositories); //can be eliminated  //3 pairs
-        Map<Pair, List<Integer>> rows = new HashMap<>();
+        Map<Pair, List<Double>> rows = new HashMap<>();
 
         // r1,r2 ------ Ha
         // f2, r3
@@ -29,15 +29,21 @@ public class Compare {
         return new Results(rows);
     }
 
-    private static List<Integer> checkSimilarity(Pair pair) {
+    private static List<Double> checkSimilarity(Pair pair) {
         // get plagiarsim from codequiry API
-        return new ArrayList<>();
+        String pathToFirstSourceCode = pair.getReference().getLocalLink();
+        String pathToSecondSourceCode = pair.getReferred().getLocalLink();
+
+
+        //TODO: call CodeQuiry
+        List<Double> ret = CodeQuiry(pathToFirstSourceCode, pathToSecondSourceCode);
+        return ret;
     }
+
 
     private static List<Pair> getPairs(List<Repository> repositories) {
 
         List<Pair> pairs = new ArrayList<>();
-
         for (int i = 0; i < repositories.size(); i++) {
             for (int j = i + 1; j < repositories.size(); j++) {
                 Pair pair = new Pair(repositories.get(i), repositories.get(j));
@@ -45,7 +51,6 @@ public class Compare {
             }
         }
 
-        // Pair(repo1, repo2), Pair(repo2, repo3),.....
 
         return pairs;
     }
