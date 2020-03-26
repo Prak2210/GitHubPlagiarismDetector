@@ -15,7 +15,7 @@ public class Repository {
         this.repoIndex = Integer.parseInt(teamData[0]);
         this.team = Arrays.asList(teamData[1].split(","));
         this.repoLink = teamData[2];
-        this.localLink = this.repoIndex + "/";
+        this.localLink = "/team" + this.repoIndex;
     }
 
     public boolean isTeamProject() {
@@ -26,30 +26,22 @@ public class Repository {
     }
 
     public String show() {
-        return "ID: " + repoIndex + " Team: " + team.toString() + " URL: " + repoLink +" local: "+ localLink;
+        return "ID: " + repoIndex + " Team: " + team.toString() + " URL: " + repoLink + " Local-Path: " + localLink;
     }
 
-    public void setRepoIndex(int repoIndex) {
-        this.repoIndex = repoIndex;
+    public String getTeam() {
+        return team.toString();
     }
-    public int getRepoIndex()
-    {
+
+    public int getRepoIndex() {
         return this.repoIndex;
     }
-    public void setLocalLink(String localLink)
-    {
-        this.localLink = localLink;
-    }
-    public String getLocalLink ()
-    {
+
+    public String getLocalLink() {
         return this.localLink;
     }
-    public void setRepoLink(String RepoLink)
-    {
-        this.repoLink = RepoLink;
-    }
-    public String getRepoLink()
-    {
+
+    public String getRepoLink() {
         return this.repoLink;
     }
 

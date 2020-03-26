@@ -11,23 +11,17 @@ public class Results {
         this.rows = rows;
     }
 
-    public void printResults() {
+    public void displayResults() {
+        for (Map.Entry<Pair, List<Double>> row : rows.entrySet()) {
+            Pair pair = row.getKey();
+            int referenceID = pair.getReference().getRepoIndex();
+            int referredID = pair.getReferred().getRepoIndex();
+            String referenceTeam = pair.getReference().getTeam();
+            String referredTeam = pair.getReferred().getTeam();
+            double plagiarism = row.getValue().get(0);
 
-        Iterator it = rows.entrySet().iterator();
-
-        while (it.hasNext())
-        {
-            Map.Entry mapElement = (Map.Entry)it.next();
-            System.out.println(mapElement.getKey() + " : " + mapElement.getValue());
+            System.out.println("Source Team ID:" + referenceID + " Authors: " + referenceTeam +
+                    " Compared with Team ID: " + referredID + " and Authors: " + referredTeam + " " + plagiarism);
         }
-
-        // we make a table from rows: pair(r1, r2) and value of rows hashmap is % plagiarism
-
-        // System.out.----> table
-        // try to figure out some interactive charts
-    }
-    public void displayResults()
-    {
-        
     }
 }

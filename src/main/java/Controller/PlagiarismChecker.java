@@ -22,7 +22,6 @@ public class PlagiarismChecker {
         }
         takePull(repositories);
         Results results = Compare.compare(repositories);
-        results.printResults();
         results.displayResults();
     }
 
@@ -41,6 +40,7 @@ public class PlagiarismChecker {
                 continue;
             }
             Repository repository = new Repository(teamData);
+            System.out.println(repository.show());
             repositories.add(repository);
         }
     }
