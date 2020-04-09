@@ -4,9 +4,6 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import dto.Repository;
 import dto.Results;
-import okhttp3.OkHttpClient;
-import org.kohsuke.github.GitHub;
-
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,14 +14,8 @@ import java.util.List;
 public class PlagiarismChecker {
 
     private static List<Repository> repositories;
-    private static OkHttpClient httpClient;
-    private static final String LOCALPATH = "/Users/prakshat/Documents/git/GitHubPlagiarismDetector/src/main/resources/Repositories/team";
-    private static String changeDirectory = "cd " + LOCALPATH;
-    private static String takePull = "git pull -r";
-    private static String cloneRepository = "git clone ";
-    private static String command = "ls";
 
-    public static void run(CSVReader teams, boolean reload) throws Exception {
+    public static void run(CSVReader teams, boolean reload) throws IOException, CsvValidationException {
 
         if (reload || repositories == null) {
             initialize(teams);
@@ -34,30 +25,13 @@ public class PlagiarismChecker {
         results.displayResults();
     }
 
-    private static void takePull(List<Repository> repositories) throws Exception {
-        OkHttpExample okHttpExample = new OkHttpExample();
-        okHttpExample.makeTeamRepositories(repositories.size());
-        okHttpExample.sendPost(httpClient, repositories);
+    private static void takePull(List<Repository> repositories) {
 
-        for (int index = 1; index <= repositories.size(); index++) {
-            Repository repository = repositories.get(index - 1);
-            command += " && " + changeDirectory + index + " && " + cloneRepository + repository.getRepoLink();
-        }
-        ProcessBuilder processBuilder = new ProcessBuilder();
-        processBuilder.command("bash", "-c", command);
-        Process process = processBuilder.start();
-
-        int exitVal = process.waitFor();
-        if (exitVal == 0) {
-            System.out.println("Latest pull for the repositories taken!");
-        }
     }
-
 
     private static void initialize(CSVReader teams) throws IOException, CsvValidationException {
         String[] teamData;
         repositories = new ArrayList<>();
-        httpClient = new OkHttpClient();
         int rows = 0;
 
         while ((teamData = teams.readNext()) != null) {
@@ -66,6 +40,7 @@ public class PlagiarismChecker {
                 continue;
             }
             Repository repository = new Repository(teamData);
+            System.out.println(repository.show());
             repositories.add(repository);
         }
     }

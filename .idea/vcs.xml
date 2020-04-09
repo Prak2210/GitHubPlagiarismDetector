@@ -2,5 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/PrivacySurveyScripts" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/main/resources/Repositories/PrivacySurveyScripts" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/main/resources/Repositories/team1/GitHubPlagiarismDetector" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/main/resources/Repositories/team2/gitbot" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/main/resources/Repositories/team3/gitbot" vcs="Git" />
   </component>
 </project>

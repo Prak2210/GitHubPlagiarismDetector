@@ -12,12 +12,6 @@ public class Compare {
 
         Map<Pair, List<Double>> rows = new HashMap<>();
 
-        // r1, r2, r3 ---> [r1,r2], [r1,r3], [r2, r3]
-
-
-        // rows will contains this:
-        // [r1, r2] -> 99.8%
-        // [r1, r3] -> 85%
         for (int i = 0; i < repositories.size(); i++) {
             for (int j = i + 1; j < repositories.size(); j++) {
                 Pair pair = new Pair(repositories.get(i), repositories.get(j));
@@ -37,14 +31,8 @@ public class Compare {
         return ret;
     }
 
-    //TODO
     private static List<Double> CodeQuiry(String referenceURL, String referredURL) {
         return Arrays.asList(new Double[]{99.9, 23.0});
     }
 
 }
-
-
-// Connecting our code with Codequiry API
-// Modify results to suit our requirements
-// Making this entire application live as an API
