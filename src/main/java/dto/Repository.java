@@ -10,11 +10,14 @@ public class Repository {
     private List<String> team; //unityids
     private static int index = 1;
 
+    private final static String LOCALPATH = "/Users/prakshat/Documents/git/GitHubPlagiarismDetector/src/main/resources/Repositories/team";
+
     public Repository(String[] teamData) {
         this.repoIndex = index++;
         this.team = Arrays.asList(teamData[1].split(","));
         this.repoLink = teamData[2];
-        this.localLink = "/team" + this.repoIndex;
+
+        this.localLink = LOCALPATH + this.repoIndex + "/";
     }
 
     public boolean isTeamProject() {
