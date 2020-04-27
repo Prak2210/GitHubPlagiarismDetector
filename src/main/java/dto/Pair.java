@@ -8,20 +8,12 @@ public class Pair {
         this.reference = reference;
         this.referred = referred;
     }
-    public Repository getReference()
-    {
+
+    public Repository getReference() {
         return this.reference;
     }
-    public void setReference(Repository reference)
-    {
-        this.reference = reference;
-    }
-    public void setReferred(Repository referred)
-    {
-        this.referred = referred;
-    }
-    public Repository getReferred()
-    {
+
+    public Repository getReferred() {
         return this.referred;
     }
 }
