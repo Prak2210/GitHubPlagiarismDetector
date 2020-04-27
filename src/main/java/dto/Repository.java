@@ -22,7 +22,7 @@ public class Repository {
         this.repoIndex = index++;
         this.team = Arrays.asList(teamData[1].split(","));
         this.repoLink = teamData[2];
-        this.localLink = PlagiarismChecker.getLocalPath() + this.repoIndex + "/codequiry.py.zip";
+        this.localLink = PlagiarismChecker.getLocalPath() + this.repoIndex + "/master.zip";
     }
 
     /**
