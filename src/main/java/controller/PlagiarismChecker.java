@@ -70,7 +70,6 @@ public class PlagiarismChecker extends Thread {
         }
 
         takePull(repositories);
-
         Results results = new Results();
         results.compareRepos(repositories);
         results.displayResults();
@@ -182,7 +181,7 @@ public class PlagiarismChecker extends Thread {
     public static void main(String a[]) {
         try {
             PlagiarismChecker checkProcess = new
-                    PlagiarismChecker("Teams.csv", "python",
+                    PlagiarismChecker("Teams.csv", "ruby",
                     "/Users/prakshat/Documents/git", 2);
             PlagiarismChecker controller = new PlagiarismChecker();
             controller.setName("controller");

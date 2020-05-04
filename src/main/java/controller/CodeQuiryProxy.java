@@ -20,7 +20,7 @@ public class CodeQuiryProxy {
         client = new OkHttpClient();
         BUILDER = new Request.Builder()
                 .addHeader("Accept", "*/*")
-                .addHeader("apikey", "20950803c216ddd152a0ea605a404c2217a793a0a660d99b433d774ee35844b0");
+                .addHeader("apikey", "ea0fc2a276089c875492ade3a2080af7115a8da5954d2d6fe21826da308590f6");
         parser = new Parser();
     }
 
@@ -54,6 +54,7 @@ public class CodeQuiryProxy {
                 .build();
 
         Response response = client.newCall(request).execute();
+        System.out.println(response);
         return parser.getCheckID(response.body().string());
     }
 

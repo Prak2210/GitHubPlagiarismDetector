@@ -13,23 +13,26 @@ public class Results {
     }
 
     /**
-     *
      * @param repositories list of all repositories
      *                     compare them one by one and get similarity
      */
     public void compareRepos(List<Repository> repositories) {
 
-        // r1, r2, r3 ---> [r1,r2], [r1,r3], [r2, r3]
-        // rows will contains this:
-        // [r1, r2] -> 99.8%
-        // [r1, r3] -> 85%
         try {
+            /* Todo: uncomment the line "uploadAndCheck" if you want to start your own checks
+                I have commented this out because, we don't want to waste available
+                checks if not necessary or only for trial. Also, delete the call to
+                "removeThisMethodInFuture" as it is not useful when you wannt to
+                run on your actual data.
+            */
+
+//            Repository.uploadAndCheck(repositories);
+            Repository.removeThisMethodInFuture();
             for (int i = 0; i < repositories.size(); i++) {
                 for (int j = i + 1; j < repositories.size(); j++) {
                     Pair pair = new Pair(repositories.get(i), repositories.get(j));
                     Repository referencedRepo = repositories.get(i);
                     Repository referredRepo = repositories.get(j);
-
                     double plagiarismDetected = referencedRepo.compare(referredRepo);
                     this.rows.put(pair, plagiarismDetected);
                 }
@@ -40,7 +43,7 @@ public class Results {
     }
 
     /**
-     *  Display results in a table format
+     * Display results in a table format
      */
     public void displayResults() {
 
@@ -56,8 +59,8 @@ public class Results {
                     " Compared with Team ID: " + referredID + " and Authors: " + referredTeam + " " + plagiarism);
         }
 
-        int ind=0, size=0;
-        String [][] data = new String[rows.size()][5];
+        int ind = 0, size = 0;
+        String[][] data = new String[rows.size()][5];
         for (Map.Entry<Pair, Double> row : rows.entrySet()) {
 
             Pair pair = row.getKey();
@@ -74,18 +77,19 @@ public class Results {
             ind++;
 
         }
-        JFrame frame; JTable table;
-        frame =  new JFrame();
+        JFrame frame;
+        JTable table;
+        frame = new JFrame();
 
         frame.setTitle("Plagiarism Results");
 
         String[] columnNames = {"Source Team ID", "Authors", "Comapred with Team ID", "Authors", "Plagiarism"};
         table = new JTable(data, columnNames);
-        table.setBounds(30, 40, 200, 300);
+        table.setBounds(30, 40, 1000, 1000);
 
         JScrollPane sp = new JScrollPane(table);
         frame.add(sp);
-        frame.setSize(500, 200);
+        frame.setSize(1000, 1000);
         frame.setVisible(true);
     }
 }
